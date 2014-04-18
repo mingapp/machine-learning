@@ -43,7 +43,7 @@ From \href{https://share.coursera.org/wiki/index.php/ML:Main}{Coursera ML WIKI}
 \end{itemize}
 \subsection{Non-linear Hypotheses}
 
-Performing linear regression with a complex set of data with many features is very unwieldy. Say you wanted to create a hypothesis from three features that included all the quadratic terms:
+Performing linear regression with a complex set of data with many features is very unwieldy(笨拙的). Say you wanted to create a hypothesis from three features that included all the quadratic terms:
 
 $g(\theta_0+\theta_1x_1^2+\theta_2x_1x_2+\theta_3x_1x_3+\theta_4x_2^2+\theta_5x_2x_3+\theta_6x_3^2)$
 
@@ -60,9 +60,9 @@ Now let's say we need to make a quadratic hypothesis function. With quadratic fe
 Neural networks offers an alternate way to perform machine learning when we have complex hypotheses with many features.
 \subsection{Neurons and the Brain}
 
-Neural networks are limited imitations of how our own brains work. They've had a big recent resurgence because of advances in computer hardware.
+Neural networks are limited imitations（模仿） of how our own brains work. They've had a big recent resurgence（复活） because of advances in computer hardware.
 
-There is evidence that the brain uses only one "learning algorithm" for all its different functions. Scientists have tried cutting (in an animal brain) the connection between the ears and the auditory cortex and rewiring the optical nerve with the auditory cortex to find that the auditory cortex literally learns to see.
+There is evidence that the brain uses only one "learning algorithm" for all its different functions. Scientists have tried cutting (in an animal brain) the connection between the ears and the auditory cortex and rewiring the optical nerve with the auditory cortex（听觉皮层） to find that the auditory cortex literally learns to see.
 
 This principle is called "neuroplasticity" and has many examples and experimental evidence.
 \subsection{Model Representation I}
@@ -92,9 +92,9 @@ Our input nodes (layer 1) go into another node (layer 2), and are output as the 
 
 The first layer is called the "input layer" and the final layer the "output layer," which gives the final value computed on the hypothesis.
 
-We can have intermediate layers of nodes between the input and output layers called the "hidden layer."
+We can have intermediate layers of nodes between the input and output layers called the "hidden layer".
 
-We label these intermediate or "hidden" layer nodes $a_0^2 \cdots a_n^2$ and call them "activation units."
+We label these intermediate or "hidden" layer nodes $a_0^2 \cdots a_n^2$ and call them "activation units".
 
 $a_i^{(j)}$="activation" of unit $i$ in layer $j$
 
@@ -107,7 +107,7 @@ $\left[\begin{matrix}
 x_0 \\
 x_1 \\
 x_2 \\
-x_4
+x_3
 \end{matrix}\right]\to\left[
 \begin{matrix}
 a_1^{(2)} \\
@@ -136,11 +136,11 @@ Each layer gets its own matrix of weights, $\theta^{(j)}$.
 
 The dimensions of these matrices of weights is determined as follows:
 
-If network has $s_j$ units in layer $j$ and $s_(j+1)$ units in layer $j+1$, then $\theta^{(j)}$ will be of dimension $s_{j+1}×(s_j+1)$.
+If network has $s_j$ units in layer $j$ and $s_{(j+1)}$ units in layer $j+1$, then $\theta^{(j)}$ will be of dimension $s_{j+1}×(s_j+1)$.
 
 The +1 comes from the addition in $\theta^{(j)}$ of the "bias nodes," $x_0$ and $\theta_0^{(j)}$. In other words the output nodes will not include the bias nodes while the inputs will.
 
-Example: layer 1 has 2 input nodes and layer 2 has 4 activation nodes. Dimension of $\theta^{(1)}$ is going to be $4×3$ where $s_j=2$ and $s_j+1=4$, so $s_{j+1}×(s_j+1)=4×3$.
+Example: layer 1 has 2 input nodes and layer 2 has 4 activation nodes. Dimension of $\theta^{(1)}$ is going to be $4×3$ where $s_j=2$ and $s_{j+1}=4$, so $s_{j+1}×(s_j+1)=4×3$.
 
 
 \subsection{Model Representation II}
@@ -159,9 +159,9 @@ In other words, for a given layer $j$ and node $k$, the variable $z$ will be:
 
 $$z_k^{(j)}=\theta_{k,0}^{(j−1)}x_0+\theta_{k,1}^{(j−1)}x_1+\cdots +\theta_{k,n}^{(j−1)}x_n$$
 
-The vector representation of $x$ and $z^{(j)}$ is:
+The vector representation of $X$ and $z^{(j)}$ is:
 
-$x=\left[\begin{matrix}
+$X=\left[\begin{matrix}
 x_0 \\
 x1  \\
 \dots \\
@@ -177,9 +177,9 @@ $
 
 We can compute $z^{(j)}$ with:
 
-$z^{(j)}=\theta^{(j−1)}x$
+$z^{(j)}=\Theta^{(j−1)}X$
 
-We are multiplying our matrix $\theta^{(j−1)}$ with dimensions $s_j×(n+1)$ (where $s_j$ is the number of our activation nodes) by our vector $X$ with height $(n+1)$. This gives us our vector $z^{(j)}$ with height $s_j$.
+We are multiplying our matrix $\Theta^{(j−1)}$ with dimensions $s_j*(n+1)$ (where $s_j$ is the number of our activation nodes) by our vector $X$ with height $(n+1)$. This gives us our vector $z^{(j)}$ with height $s_j$.
 
 Now we can get a vector of our activation nodes for layer $j$ as follows:
 
@@ -247,9 +247,9 @@ $\begin{matrix*}[r]
 AND: \\
 \theta^{(1)}=[\begin{matrix}−30 & 20 & 20\end{matrix}] \\
 NOR: \\
-\theta(1)=[\begin{matrix}10 & −20 & −20\end{matrix}] \\
+\theta^{(1)}=[\begin{matrix}10 & −20 & −20\end{matrix}] \\
 OR: \\
-\theta(1)=[\begin{matrix}−10 & 20 & 20\end{matrix}]
+\theta^{(1)}=[\begin{matrix}−10 & 20 & 20\end{matrix}]
 \end{matrix*}$
 
 We can combine these to get the XNOR logical operator (which gives 1 if $x_1$ and $x_2$ are both 0 or both 1).
@@ -287,7 +287,7 @@ Let's write out the values for all our nodes:
 
 $a^{(2)}=g(\theta^{(1)}\cdot x)$
 
-$a(3)=g(\theta^{(2)} \cdot a^{(2)})$
+$a^{(3)}=g(\theta^{(2)} \cdot a^{(2)})$
 
 $h_\theta(x)=a^{(3)}$
 
